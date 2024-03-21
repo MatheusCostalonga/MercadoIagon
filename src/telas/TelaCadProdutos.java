@@ -31,7 +31,7 @@ CadastrarProdutos mercado = new CadastrarProdutos();
                    int linhaSelecionada = tabelaProdutos.getSelectedRow();
                    if(linhaSelecionada != -1){
                    int idAtual=(int)tabelaProdutos.getValueAt(linhaSelecionada, 0);
-                   mercado.setIdProdutos(idAtual);
+                   
                }
            }    
            } 
@@ -44,12 +44,7 @@ public void readJtable(){
     modelo.setNumRows(0);    
    for(CadastrarProdutos p: mercados.read()){
        modelo.addRow(new Object[]{
-        p.getIdProdutos(),
-        p.getNome(),
-        p.getCategoria(),
-        p.getQuantidade(),
-        p.getDesconto(),
-        p.getPreco()
+           
        });
    }
 }
