@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package telas;
 
 import component.FormCadastroProduto;
@@ -18,15 +13,8 @@ import javaswingdev.GradientDropdownMenu;
 import javaswingdev.MenuEvent;
 import javax.swing.JFrame;
 
-/**
- *
- * @author Senai
- */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaPrincipal
-     */
     public TelaPrincipal() {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
