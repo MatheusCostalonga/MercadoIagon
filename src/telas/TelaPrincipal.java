@@ -12,11 +12,13 @@ import java.awt.Component;
 import javaswingdev.GradientDropdownMenu;
 import javaswingdev.MenuEvent;
 import javax.swing.JFrame;
+import raven.toast.Notifications;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
     public TelaPrincipal() {
         initComponents();
+        Notifications.getInstance().setJFrame(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
@@ -36,15 +38,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     showForm(new FormHardware());
                 } else if (menuItem && index == 1 && subIndex == 2) {
                     showForm(new FormPerifirico());
-                }else if (menuItem && index == 1 && subIndex == 3) {
+                } else if (menuItem && index == 1 && subIndex == 3) {
                     showForm(new FormGames());
-                }else if (menuItem && index == 1 && subIndex == 4) {
+                } else if (menuItem && index == 1 && subIndex == 4) {
                     showForm(new FormCasaIntel());
-                }else if (menuItem && index == 2 && subIndex == 1) {
+                } else if (menuItem && index == 2 && subIndex == 1) {
                     showForm(new FormCadastroProduto());
-                }else if (menuItem && index == 2 && subIndex == 2) {
+                } else if (menuItem && index == 2 && subIndex == 2) {
                     showForm(new FormEdicaoProduto());
-                }else if (menuItem && index == 2 && subIndex == 3) {
+                } else if (menuItem && index == 2 && subIndex == 3) {
                     showForm(new FormGerenciaUsuario());
                 }
             }
@@ -83,34 +85,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipal().setVisible(true);

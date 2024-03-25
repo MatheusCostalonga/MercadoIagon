@@ -1,9 +1,68 @@
 package component;
 
+import conexao.Conexao;
+import java.awt.Image;
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import model.DAO.ProdutoDAO;
+import raven.toast.Notifications;
+
 public class FormCadastroProduto extends javax.swing.JPanel {
+
+    private FileInputStream fis;
+    private int tamanho;
 
     public FormCadastroProduto() {
         initComponents();
+        restaurarDadosComboboxCategoria();
+    }
+
+    private void carregarFoto() {
+        JFileChooser jfc = new JFileChooser();
+        jfc.setDialogTitle("Selecionar arquivo");
+        jfc.setFileFilter(new FileNameExtensionFilter("Arquivo de imagens (*.PNG,*.JPG,*.JPEG)", "png", "jpg", "jpeg"));
+        int resultado = jfc.showOpenDialog(this);
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            try {
+                fis = new FileInputStream(jfc.getSelectedFile());
+                tamanho = (int) jfc.getSelectedFile().length();
+                Image foto = ImageIO.read(jfc.getSelectedFile()).getScaledInstance(lblImg.getWidth(),
+                        lblImg.getHeight(), Image.SCALE_SMOOTH);
+                lblImg.setIcon(new ImageIcon(foto));
+                lblImg.updateUI();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+    Vector<Integer> id_categoria = new Vector<Integer>();
+
+    private void restaurarDadosComboboxCategoria() {
+        try {
+            ProdutoDAO objProdutoDao = new ProdutoDAO();
+            ResultSet rs = objProdutoDao.listarCategoria();
+            while (rs.next()) {
+                id_categoria.addElement(rs.getInt(1));
+                cbxCategoria.addItem(rs.getString(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void limparCampos() {
+        txtNome.setText("");
+        spinPreco.setValue(0);
+        cbxCategoria.setSelectedItem("Selecionar");
+        lblImg.setIcon(new ImageIcon(FormCadastroProduto.class.getResource("/assets/carregar-imagem.png")));
     }
 
     @SuppressWarnings("unchecked")
@@ -54,7 +113,7 @@ public class FormCadastroProduto extends javax.swing.JPanel {
         dropShadowBorder2.setShowTopShadow(true);
         jPanel3.setBorder(dropShadowBorder2);
 
-        lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/carregar imagem.png"))); // NOI18N
+        lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/carregar-imagem.png"))); // NOI18N
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder3 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder3.setShowLeftShadow(true);
         dropShadowBorder3.setShowTopShadow(true);
@@ -62,6 +121,11 @@ public class FormCadastroProduto extends javax.swing.JPanel {
 
         btnImg.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
         btnImg.setText("CARREGAR IMAGEM");
+        btnImg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImgActionPerformed(evt);
+            }
+        });
 
         txtNome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
@@ -69,18 +133,24 @@ public class FormCadastroProduto extends javax.swing.JPanel {
         jLabel2.setText("NOME");
 
         cbxCategoria.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", " " }));
+        cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar" }));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel3.setText("CATEGORIA");
 
         spinPreco.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        spinPreco.setModel(new javax.swing.SpinnerNumberModel(0.0f, 0.0f, null, 1.0f));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel4.setText("PREÇO");
 
         btnAdicionar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
         btnAdicionar.setText("ADICIONAR PRODUTO");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -151,6 +221,42 @@ public class FormCadastroProduto extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImgActionPerformed
+        carregarFoto();
+    }//GEN-LAST:event_btnImgActionPerformed
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+        if (txtNome.getText().trim().equals("") || (float) spinPreco.getValue() == 0) {
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "PREENCHA TODOS OS CAMPOS CORRETAMENTE!");
+            return;
+        } else if (cbxCategoria.getSelectedItem().equals("Selecionar")) {
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "SELECIONE UMA CATEGORIA!");
+            return;
+        } else if (tamanho == 0) {
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "SELECIONE UMA FOTO!");
+            return;
+        } else {
+            String sql = "INSERT INTO produtos(nome,img,valor,categoria_id)values(?,?,?,?)";
+            try {
+                Connection conexao = Conexao.conectar();
+                PreparedStatement stmt = null;
+                stmt = conexao.prepareStatement(sql);
+                stmt.setString(1, txtNome.getText());
+                stmt.setBlob(2, fis, tamanho);
+                stmt.setFloat(3, (float) spinPreco.getValue());
+                stmt.setInt(4, id_categoria.get(cbxCategoria.getSelectedIndex() - 1));
+
+                stmt.executeUpdate();
+                stmt.close();
+                conexao.close();
+                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_RIGHT, "CADASTRO REALIZADO COM SUCESSO!");
+            } catch (SQLException e) {
+                System.out.println(" cadastro de produto: " + e);
+            }
+        }
+        limparCampos();
+    }//GEN-LAST:event_btnAdicionarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
