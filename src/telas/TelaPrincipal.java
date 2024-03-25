@@ -26,7 +26,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menu.addItem("Home");
         menu.addItem("Categorias", "Hardware", "Periféricos", "Games", "Casa Inteligente");
         menu.addItem("ADM", "Cadastro de Produtos", "Modificação de Produtos", "Gerenciamento de usuarios");
-
+        showForm(new FormHome());
         menu.setFont(new java.awt.Font("sansserif", 1, 14));
         menu.applay(this);
         menu.addEvent(new MenuEvent() {
