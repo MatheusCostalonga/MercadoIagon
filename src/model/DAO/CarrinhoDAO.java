@@ -13,15 +13,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.bean.Carrinho;
+import model.bean.CarrinhoDTO;
 
 /**
  *
  * @author Senai
  */
 public class CarrinhoDAO {
-         public List<Carrinho>read() {
-        List<Carrinho> carrinhos = new ArrayList();
+         public List<CarrinhoDTO>read() {
+        List<CarrinhoDTO> carrinhos = new ArrayList();
         
         try{
             Connection conexao = Conexao.conectar();
@@ -30,7 +30,7 @@ public class CarrinhoDAO {
             stmt = conexao.prepareStatement("SELECT * FROM produtos_pedidos");
             rs = stmt.executeQuery();
             while(rs.next()){
-                Carrinho carrinho = new Carrinho();
+                CarrinhoDTO carrinho = new CarrinhoDTO();
                 carrinho.setQuantidade(rs.getInt("id_produtos_pedido"));
                 carrinho.setPreco_unitario(rs.getInt("quantidade"));
                 carrinhos.add(carrinho);
@@ -45,7 +45,7 @@ public class CarrinhoDAO {
      }
         return carrinhos;
 }
-       public void addProdutoAoCarrinho(Carrinho carrinhos){
+       public void addProdutoAoCarrinho(CarrinhoDTO carrinhos){
         try{
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -63,7 +63,7 @@ public class CarrinhoDAO {
         }
     }
        //resetar o carrinho
-       public void resetar (Carrinho carrinhos){
+       public void resetar (CarrinhoDTO carrinhos){
         try{
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -77,7 +77,7 @@ public class CarrinhoDAO {
             e.printStackTrace();
         }
     } 
-    public void ExcluirItemDoCarrinho (Carrinho carrinhos){
+    public void ExcluirItemDoCarrinho (CarrinhoDTO carrinhos){
         try{
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;

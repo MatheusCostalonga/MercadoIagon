@@ -18,7 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import model.DAO.ProdutoDAO;
+import model.bean.CarrinhoDTO;
 import model.bean.ProdutoDTO;
+import raven.glasspanepopup.GlassPanePopup;
+import raven.toast.Notifications;
 
 public class FormHome extends javax.swing.JPanel {
 
@@ -52,7 +55,9 @@ public class FormHome extends javax.swing.JPanel {
 
             btnAdicionarAoCarrinho.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // Adicione aqui a lógica para adicionar o produto ao carrinho
+                    int qtdProduto = (int)spinner.getValue();
+                    CarrinhoDTO objCarrinho = new CarrinhoDTO();
+                    
                     JOptionPane.showMessageDialog(null, "Produto adicionado ao carrinho!");
                     
                 }
@@ -97,6 +102,7 @@ public class FormHome extends javax.swing.JPanel {
 
         ScrollPane = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
+        btnCarrinho = new raven.glasspanepopup.Button();
 
         setPreferredSize(new java.awt.Dimension(1889, 992));
 
@@ -116,23 +122,42 @@ public class FormHome extends javax.swing.JPanel {
 
         ScrollPane.setViewportView(jPanel3);
 
+        btnCarrinho.setBackground(new java.awt.Color(255, 255, 255));
+        btnCarrinho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/carrinho.png"))); // NOI18N
+        btnCarrinho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCarrinhoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(ScrollPane)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 120, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addComponent(btnCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 872, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCarrinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarrinhoActionPerformed
+        GlassPanePopup.showPopup(new FormCarrinho());
+    }//GEN-LAST:event_btnCarrinhoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPane;
+    private raven.glasspanepopup.Button btnCarrinho;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

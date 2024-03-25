@@ -8,7 +8,7 @@ package telas;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import model.bean.Carrinho;
+import model.bean.CarrinhoDTO;
 import model.DAO.CarrinhoDAO;
 
 /**
@@ -17,7 +17,7 @@ import model.DAO.CarrinhoDAO;
  */
 public class TelaCarrinho extends javax.swing.JFrame {
 CarrinhoDAO carrinhos = new CarrinhoDAO();
-Carrinho carrinho = new Carrinho();
+CarrinhoDTO carrinho = new CarrinhoDTO();
     /**
      * Creates new form TelaCarrinho
      */
@@ -42,7 +42,7 @@ public TelaCarrinho() {
 public void readJtable(){
     DefaultTableModel modelo = (DefaultTableModel) tabelaCarrinho.getModel();
     modelo.setNumRows(0);    
-   for(Carrinho p: carrinhos.read()){
+   for(CarrinhoDTO p: carrinhos.read()){
        modelo.addRow(new Object[]{
         p.getId_produtos_pedido(),
         p.getQuantidade(),

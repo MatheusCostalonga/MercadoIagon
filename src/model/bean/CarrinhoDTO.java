@@ -9,15 +9,15 @@ package model.bean;
  *
  * @author Senai
  */
-public class Carrinho {
+public class CarrinhoDTO {
     private int  id_produtos_pedido;
     private int quantidade;
     private float preco_unitario;
 
-    public Carrinho() {
+    public CarrinhoDTO() {
     }
 
-    public Carrinho(int id_produtos_pedido, int quantidade, float preco_unitario) {
+    public CarrinhoDTO(int id_produtos_pedido, int quantidade, float preco_unitario) {
         this.id_produtos_pedido = id_produtos_pedido;
         this.quantidade = quantidade;
         this.preco_unitario = preco_unitario;

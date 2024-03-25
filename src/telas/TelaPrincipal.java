@@ -12,12 +12,14 @@ import java.awt.Component;
 import javaswingdev.GradientDropdownMenu;
 import javaswingdev.MenuEvent;
 import javax.swing.JFrame;
+import raven.glasspanepopup.GlassPanePopup;
 import raven.toast.Notifications;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
     public TelaPrincipal() {
         initComponents();
+        GlassPanePopup.install(this);
         Notifications.getInstance().setJFrame(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
