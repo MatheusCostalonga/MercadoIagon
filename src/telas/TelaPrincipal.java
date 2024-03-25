@@ -3,10 +3,12 @@ package telas;
 import component.FormCadastroProduto;
 import component.FormCasaIntel;
 import component.FormEdicaoProduto;
+import component.FormEntrar;
 import component.FormGames;
 import component.FormGerenciaUsuario;
 import component.FormHardware;
 import component.FormHome;
+import component.FormPerfil;
 import component.FormPerifirico;
 import java.awt.Component;
 import javaswingdev.GradientDropdownMenu;
@@ -16,6 +18,10 @@ import raven.glasspanepopup.GlassPanePopup;
 import raven.toast.Notifications;
 
 public class TelaPrincipal extends javax.swing.JFrame {
+
+    private boolean adm = false;
+    private boolean logged = true;
+    private int idUsuario;
 
     public TelaPrincipal() {
         initComponents();
@@ -27,7 +33,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         GradientDropdownMenu menu = new GradientDropdownMenu();
         menu.addItem("Home");
         menu.addItem("Categorias", "Hardware", "Periféricos", "Games", "Casa Inteligente");
-        menu.addItem("ADM", "Cadastro de Produtos", "Modificação de Produtos", "Gerenciamento de usuarios");
+        if (adm == true) {
+            menu.addItem("ADM", "Cadastro de Produtos", "Modificação de Produtos", "Gerenciamento de usuarios");
+        } else {
+            if (!logged) {
+                menu.addItem("Usuario", "Entrar");
+            } else {
+                menu.addItem("Usuario", "Perfil");
+            }
+        }
         showForm(new FormHome());
         menu.setFont(new java.awt.Font("sansserif", 1, 14));
         menu.applay(this);
@@ -44,12 +58,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     showForm(new FormGames());
                 } else if (menuItem && index == 1 && subIndex == 4) {
                     showForm(new FormCasaIntel());
-                } else if (menuItem && index == 2 && subIndex == 1) {
-                    showForm(new FormCadastroProduto());
-                } else if (menuItem && index == 2 && subIndex == 2) {
-                    showForm(new FormEdicaoProduto());
-                } else if (menuItem && index == 2 && subIndex == 3) {
-                    showForm(new FormGerenciaUsuario());
+                }
+                if (adm == true) {
+                    if (menuItem && index == 2 && subIndex == 1) {
+                        showForm(new FormCadastroProduto());
+                    } else if (menuItem && index == 2 && subIndex == 2) {
+                        showForm(new FormEdicaoProduto());
+                    } else if (menuItem && index == 2 && subIndex == 3) {
+                        showForm(new FormGerenciaUsuario());
+                    }
+                } else {
+                    if (logged == false) {
+                        if (menuItem && index == 2 && subIndex == 1) {
+                            showForm(new FormEntrar());
+                        }
+                    } else {
+                        if (menuItem && index == 2 && subIndex == 1) {
+                            showForm(new FormPerfil());
+                        }
+                    }
                 }
             }
         });
