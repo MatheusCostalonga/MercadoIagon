@@ -184,7 +184,7 @@ public class FormEntrar extends javax.swing.JPanel {
                 if (telaPrincipal != null) {
                     GradientDropdownMenu menu = new GradientDropdownMenu();
                     telaPrincipal.atualizarVariaveis();
-                    telaPrincipal.showForm(new FormHome());
+                    telaPrincipal.showForm(new FormHome(telaPrincipal));
                     telaPrincipal.atualizaMenu();
                 }
             }

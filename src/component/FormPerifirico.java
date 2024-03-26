@@ -1,11 +1,15 @@
 package component;
 
 import raven.glasspanepopup.GlassPanePopup;
+import telas.TelaPrincipal;
 
 public class FormPerifirico extends javax.swing.JPanel {
 
-    public FormPerifirico() {
+    private TelaPrincipal telaPrincipal;
+
+    public FormPerifirico(TelaPrincipal telaPrincipal) {
         initComponents();
+        this.telaPrincipal = telaPrincipal;
     }
 
     @SuppressWarnings("unchecked")
@@ -66,7 +70,7 @@ public class FormPerifirico extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCarrinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarrinhoActionPerformed
-        GlassPanePopup.showPopup(new FormCarrinho());
+        GlassPanePopup.showPopup(new FormCarrinho(telaPrincipal));
     }//GEN-LAST:event_btnCarrinhoActionPerformed
 
 

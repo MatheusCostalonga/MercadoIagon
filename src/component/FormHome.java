@@ -16,7 +16,6 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
@@ -28,14 +27,17 @@ import model.bean.ProdutoDTO;
 import org.jdesktop.swingx.border.DropShadowBorder;
 import raven.glasspanepopup.GlassPanePopup;
 import raven.toast.Notifications;
+import telas.TelaPrincipal;
 
 public class FormHome extends javax.swing.JPanel {
 
     List<CarrinhoDTO> carrinhoItens = new ArrayList<>();
+    private TelaPrincipal telaPrincipal;
 
-    public FormHome() {
+    public FormHome(TelaPrincipal telaPrincipal) {
         initComponents();
         exibirProdutos();
+        this.telaPrincipal = telaPrincipal;
     }
 
     public void exibirProdutos() {
@@ -191,7 +193,7 @@ public class FormHome extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCarrinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarrinhoActionPerformed
-        GlassPanePopup.showPopup(new FormCarrinho());
+        GlassPanePopup.showPopup(new FormCarrinho(telaPrincipal));
     }//GEN-LAST:event_btnCarrinhoActionPerformed
 
 

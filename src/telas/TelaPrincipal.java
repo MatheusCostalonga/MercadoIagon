@@ -42,27 +42,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } else {
             menu.addItem("Usuario", "Perfil");
         }
-
-        showForm(new FormHome());
+        
+        
+        final TelaPrincipal telaPrincipal = this;
+        showForm(new FormHome(telaPrincipal));
         menu.setFont(new java.awt.Font("sansserif", 1, 14));
         menu.applay(this);
-        final TelaPrincipal telaPrincipal = this;
+        
         menu.addEvent(new MenuEvent() {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
-                System.out.println(adm);
-                System.out.println(logged);
-                System.out.println(idUsuario);
                 if (menuItem && index == 0 && subIndex == 0) {
-                    showForm(new FormHome());
+                    showForm(new FormHome(telaPrincipal));
                 } else if (menuItem && index == 1 && subIndex == 1) {
-                    showForm(new FormHardware());
+                    showForm(new FormHardware(telaPrincipal));
                 } else if (menuItem && index == 1 && subIndex == 2) {
-                    showForm(new FormPerifirico());
+                    showForm(new FormPerifirico(telaPrincipal));
                 } else if (menuItem && index == 1 && subIndex == 3) {
-                    showForm(new FormGames());
+                    showForm(new FormGames(telaPrincipal));
                 } else if (menuItem && index == 1 && subIndex == 4) {
-                    showForm(new FormCasaIntel());
+                    showForm(new FormCasaIntel(telaPrincipal));
                 }
 
                 // Lógica para mostrar o formulário correto com base no estado do usuário
@@ -95,17 +94,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menu.addItem("Home");
         menu.addItem("Categorias", "Hardware", "Periféricos", "Games", "Casa Inteligente");
         if (adm && logged) {
-            menu.addItem("ADM", "Cadastro de Produtos", "Modificação de Produtos", "Gerenciamento de usuários");
+            menu.addItem("ADM", "Cadastro de Produtos", "Modificação de Produtos", "Gerenciamento de usuários","Trocar Usuario");
         } else if (!logged) {
             menu.addItem("Usuario", "Entrar");
         } else {
-            menu.addItem("Usuario", "Perfil");
+            menu.addItem("Usuario", "Perfil", "Trocar Usuario");
         }
-
-        showForm(new FormHome());
+        
+        final TelaPrincipal telaPrincipal = this;
+        showForm(new FormHome(telaPrincipal));
         menu.setFont(new java.awt.Font("sansserif", 1, 14));
         menu.applay(this);
-        final TelaPrincipal telaPrincipal = this;
         menu.addEvent(new MenuEvent() {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
@@ -113,15 +112,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 System.out.println(logged);
                 System.out.println(idUsuario);
                 if (menuItem && index == 0 && subIndex == 0) {
-                    showForm(new FormHome());
+                    showForm(new FormHome(telaPrincipal));
                 } else if (menuItem && index == 1 && subIndex == 1) {
-                    showForm(new FormHardware());
+                    showForm(new FormHardware(telaPrincipal));
                 } else if (menuItem && index == 1 && subIndex == 2) {
-                    showForm(new FormPerifirico());
+                    showForm(new FormPerifirico(telaPrincipal));
                 } else if (menuItem && index == 1 && subIndex == 3) {
-                    showForm(new FormGames());
+                    showForm(new FormGames(telaPrincipal));
                 } else if (menuItem && index == 1 && subIndex == 4) {
-                    showForm(new FormCasaIntel());
+                    showForm(new FormCasaIntel(telaPrincipal));
                 }
 
                 // Lógica para mostrar o formulário correto com base no estado do usuário
@@ -133,6 +132,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     if (menuItem && index == 2 && subIndex == 1 && !adm) {
                         showForm(new FormPerfil());
                     }
+                    if (menuItem && index == 2 && subIndex == 2 && !adm) {
+                        showForm(new FormEntrar(telaPrincipal));
+                    }
                 }
 
                 // Lógica para mostrar os formulários de administração
@@ -143,6 +145,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         showForm(new FormEdicaoProduto());
                     } else if (menuItem && index == 2 && subIndex == 3) {
                         showForm(new FormGerenciaUsuario());
+                    }else if (menuItem && index == 2 && subIndex == 4) {
+                        showForm(new FormEntrar(telaPrincipal));
                     }
                 }
             }
