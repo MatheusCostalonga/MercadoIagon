@@ -36,7 +36,6 @@ public class FormCarrinho extends javax.swing.JPanel {
         Object[] totalRow = {"Total", "", "", totalFormatado};
         model.addRow(totalRow);
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

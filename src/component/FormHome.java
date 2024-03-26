@@ -85,6 +85,7 @@ public class FormHome extends javax.swing.JPanel {
                     carrinhoItem.setQuantidade(qtdProduto);
                     CarrinhoSingleton.getInstance().adicionarItem(carrinhoItem);
                     Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "PRODUTO ADICIONADO AO CARRINHO!");
+                    spinner.setValue(1);
                 }
             });
 

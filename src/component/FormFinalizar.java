@@ -1,6 +1,7 @@
 package component;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.DAO.PedidoDAO;
 import model.bean.CarrinhoDTO;
@@ -14,7 +15,7 @@ public class FormFinalizar extends javax.swing.JPanel {
 
     private TelaPrincipal telaPrincipal;
     private DefaultTableModel model;
-    String totalFormatado;
+    double total = 0.0;
 
     public FormFinalizar(TelaPrincipal telaPrincipal) {
         initComponents();
@@ -26,14 +27,14 @@ public class FormFinalizar extends javax.swing.JPanel {
         List<CarrinhoDTO> carrinhoItens = CarrinhoSingleton.getInstance().getCarrinhoItens();
         DefaultTableModel model = (DefaultTableModel) tblCarrinho.getModel();
         model.setRowCount(0);
-        double total = 0.0;
+
         for (CarrinhoDTO item : carrinhoItens) {
             Object[] rowData = {item.getId_produto(), item.getNome(), item.getPreco_unitario(), item.getQuantidade()};
             model.addRow(rowData);
             double subtotal = item.getPreco_unitario() * item.getQuantidade();
             total += subtotal;
         }
-        totalFormatado = String.format("%.2f", total);
+        String totalFormatado = String.format("%.2f", total);
         Object[] totalRow = {"Total", "", "", totalFormatado};
         model.addRow(totalRow);
     }
@@ -193,11 +194,13 @@ public class FormFinalizar extends javax.swing.JPanel {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "PREENCHA OS CAMPOS CORRETAMENTE!");
             return;
         }
+        Object[] options = {"Confirmar", "Cancelar"};
+        JOptionPane.showOptionDialog(null, "Clique Confirmar para continuar", "Informação", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
         PedidoDTO objPedido = new PedidoDTO();
         objPedido.setEndereco(txtEndereco.getText());
         objPedido.setMetodoPagamento((String) cbxMetodo.getSelectedItem());
         objPedido.setUsuarioId(UsuarioDTO.getIdUsuario());
-        objPedido.setValorTotal(Float.parseFloat(totalFormatado));
+        objPedido.setValorTotal((float) total);
         PedidoDAO objPedidoDao = new PedidoDAO();
         objPedidoDao.inserePedido(objPedido);
     }//GEN-LAST:event_brnConfirmarActionPerformed
