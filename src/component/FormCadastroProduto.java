@@ -237,7 +237,7 @@ public class FormCadastroProduto extends javax.swing.JPanel {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "SELECIONE UMA FOTO!");
             return;
         } else {
-            String sql = "INSERT INTO produtos(nome,img,valor,categoria_id)values(?,?,?,?)";
+            String sql = "INSERT INTO produtos(nome,imagem,valor,categoria_id)values(?,?,?,?)";
             try {
                 Connection conexao = Conexao.conectar();
                 PreparedStatement stmt = null;

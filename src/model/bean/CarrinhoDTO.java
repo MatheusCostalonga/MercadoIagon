@@ -1,34 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.bean;
 
-/**
- *
- * @author Senai
- */
 public class CarrinhoDTO {
-    private int  id_produtos_pedido;
+    private int  id_produto;
+    private String nome;
     private int quantidade;
     private float preco_unitario;
 
     public CarrinhoDTO() {
     }
 
-    public CarrinhoDTO(int id_produtos_pedido, int quantidade, float preco_unitario) {
-        this.id_produtos_pedido = id_produtos_pedido;
+    public CarrinhoDTO(int id_produto, String nome, int quantidade, float preco_unitario) {
+        this.id_produto = id_produto;
+        this.nome = nome;
         this.quantidade = quantidade;
         this.preco_unitario = preco_unitario;
     }
 
-    public int getId_produtos_pedido() {
-        return id_produtos_pedido;
+    public int getId_produto() {
+        return id_produto;
     }
 
-    public void setId_produtos_pedido(int id_produtos_pedido) {
-        this.id_produtos_pedido = id_produtos_pedido;
+    public void setId_produto(int id_produto) {
+        this.id_produto = id_produto;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public int getQuantidade() {
@@ -46,6 +47,7 @@ public class CarrinhoDTO {
     public void setPreco_unitario(float preco_unitario) {
         this.preco_unitario = preco_unitario;
     }
+
     
     
 }

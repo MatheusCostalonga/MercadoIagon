@@ -19,8 +19,8 @@ import raven.toast.Notifications;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    private boolean adm = false;
-    private boolean logged = true;
+    private boolean adm = true;
+    private boolean logged = false;
     private int idUsuario;
 
     public TelaPrincipal() {

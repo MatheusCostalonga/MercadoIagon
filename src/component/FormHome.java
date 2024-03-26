@@ -5,8 +5,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -19,11 +21,14 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import model.DAO.ProdutoDAO;
 import model.bean.CarrinhoDTO;
+import model.bean.CarrinhoSingleton;
 import model.bean.ProdutoDTO;
 import raven.glasspanepopup.GlassPanePopup;
 import raven.toast.Notifications;
 
 public class FormHome extends javax.swing.JPanel {
+
+    List<CarrinhoDTO> carrinhoItens = new ArrayList<>();
 
     public FormHome() {
         initComponents();
@@ -43,23 +48,30 @@ public class FormHome extends javax.swing.JPanel {
 
             // Adicionando a imagem
             ImageIcon icon = new ImageIcon(produto.getImagem());
+            Image img = icon.getImage();
+            Image newImg = img.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Redimensiona a imagem para 300x300
+            icon = new ImageIcon(newImg);
             JLabel labelImagem = new JLabel(icon);
 
             JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1)); // Valores mínimos, máximos e iniciais
             spinner.setMaximumSize(new Dimension(10, 30)); // Definir a largura máxima desejada
 
             JLabel labelNome = new JLabel(produto.getNome());
-            JLabel labelPreco = new JLabel("Preço: R$ "+produto.getValor());
+            JLabel labelPreco = new JLabel("Preço: R$ " + produto.getValor());
 
             JButton btnAdicionarAoCarrinho = new JButton("Adicionar ao Carrinho");
+//            btnAdicionarAoCarrinho.setEnabled(false);
 
             btnAdicionarAoCarrinho.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    int qtdProduto = (int)spinner.getValue();
-                    CarrinhoDTO objCarrinho = new CarrinhoDTO();
-                    
+                    CarrinhoDTO carrinhoItem = new CarrinhoDTO();
+                    int qtdProduto = (int) spinner.getValue();
+                    carrinhoItem.setId_produto(produto.getIdProduto());
+                    carrinhoItem.setNome(produto.getNome());
+                    carrinhoItem.setPreco_unitario(produto.getValor());
+                    carrinhoItem.setQuantidade(qtdProduto);
+                    CarrinhoSingleton.getInstance().adicionarItem(carrinhoItem);
                     JOptionPane.showMessageDialog(null, "Produto adicionado ao carrinho!");
-                    
                 }
             });
 

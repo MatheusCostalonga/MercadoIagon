@@ -26,7 +26,7 @@ public class ProdutoDAO {
                 objProduto.setIdProduto(rs.getInt("id_produto"));
                 objProduto.setNome(rs.getString("nome"));
                 objProduto.setValor(rs.getFloat("valor"));
-                Blob blob = rs.getBlob("img");
+                Blob blob = rs.getBlob("imagem");
                 int blobLength = (int) blob.length();
                 byte[] imagemBytes = blob.getBytes(1, blobLength);
                 blob.free();

@@ -1,5 +1,6 @@
 package javaswingdev;
 
+import component.FormCarrinho;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -13,10 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
+import model.bean.CarrinhoDTO;
 import net.miginfocom.swing.MigLayout;
+import raven.glasspanepopup.GlassPanePopup;
 
 public class GradientDropdownMenu extends javax.swing.JComponent {
-
+List<CarrinhoDTO> carrinhoItens = new ArrayList<>();
     public boolean isHeaderGradient() {
         return headerGradient;
     }
@@ -147,7 +150,7 @@ public class GradientDropdownMenu extends javax.swing.JComponent {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 49, Short.MAX_VALUE)
+            .addGap(0, 57, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
