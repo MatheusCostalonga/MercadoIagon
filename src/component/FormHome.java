@@ -47,7 +47,7 @@ public class FormHome extends javax.swing.JPanel {
         for (ProdutoDTO produto : produtos) {
             JPanel newPanel = new JPanel();
             newPanel.setBackground(Color.white);
-            newPanel.setPreferredSize(new Dimension(150, 400)); // Definindo o tamanho do novo painel
+            newPanel.setPreferredSize(new Dimension(150, 500)); // Definindo o tamanho do novo painel
             DropShadowBorder shadowBorder = new DropShadowBorder();
             CompoundBorder compoundBorder = BorderFactory.createCompoundBorder(
                     shadowBorder,
