@@ -14,14 +14,15 @@ import java.awt.Component;
 import javaswingdev.GradientDropdownMenu;
 import javaswingdev.MenuEvent;
 import javax.swing.JFrame;
+import model.bean.UsuarioDTO;
 import raven.glasspanepopup.GlassPanePopup;
 import raven.toast.Notifications;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    private boolean adm = false;
-    private boolean logged = false;
-    private int idUsuario;
+    private boolean adm = UsuarioDTO.isAdmin();
+    private boolean logged = UsuarioDTO.isLogged();
+    private int idUsuario = UsuarioDTO.getIdUsuario();
 
     public TelaPrincipal() {
         initComponents();
@@ -30,24 +31,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
+
         GradientDropdownMenu menu = new GradientDropdownMenu();
         menu.addItem("Home");
         menu.addItem("Categorias", "Hardware", "Periféricos", "Games", "Casa Inteligente");
-        if (adm == true) {
-            menu.addItem("ADM", "Cadastro de Produtos", "Modificação de Produtos", "Gerenciamento de usuarios");
+        if (adm && logged) {
+            menu.addItem("ADM", "Cadastro de Produtos", "Modificação de Produtos", "Gerenciamento de usuários");
+        } else if (!logged) {
+            menu.addItem("Usuario", "Entrar");
         } else {
-            if (!logged) {
-                menu.addItem("Usuario", "Entrar");
-            } else {
-                menu.addItem("Usuario", "Perfil");
-            }
+            menu.addItem("Usuario", "Perfil");
         }
+
         showForm(new FormHome());
         menu.setFont(new java.awt.Font("sansserif", 1, 14));
         menu.applay(this);
+        final TelaPrincipal telaPrincipal = this;
         menu.addEvent(new MenuEvent() {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
+                System.out.println(adm);
+                System.out.println(logged);
+                System.out.println(idUsuario);
                 if (menuItem && index == 0 && subIndex == 0) {
                     showForm(new FormHome());
                 } else if (menuItem && index == 1 && subIndex == 1) {
@@ -59,6 +64,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 } else if (menuItem && index == 1 && subIndex == 4) {
                     showForm(new FormCasaIntel());
                 }
+
+                // Lógica para mostrar o formulário correto com base no estado do usuário
+                if (logged == false) {
+                    if (menuItem && index == 2 && subIndex == 1) {
+                        showForm(new FormEntrar(telaPrincipal));
+                    }
+                } else {
+                    if (menuItem && index == 2 && subIndex == 1 && !adm) {
+                        showForm(new FormPerfil());
+                    }
+                }
+
+                // Lógica para mostrar os formulários de administração
                 if (adm == true) {
                     if (menuItem && index == 2 && subIndex == 1) {
                         showForm(new FormCadastroProduto());
@@ -67,26 +85,81 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     } else if (menuItem && index == 2 && subIndex == 3) {
                         showForm(new FormGerenciaUsuario());
                     }
+                }
+            }
+        });
+    }
+
+    public void atualizaMenu() {
+        GradientDropdownMenu menu = new GradientDropdownMenu();
+        menu.addItem("Home");
+        menu.addItem("Categorias", "Hardware", "Periféricos", "Games", "Casa Inteligente");
+        if (adm && logged) {
+            menu.addItem("ADM", "Cadastro de Produtos", "Modificação de Produtos", "Gerenciamento de usuários");
+        } else if (!logged) {
+            menu.addItem("Usuario", "Entrar");
+        } else {
+            menu.addItem("Usuario", "Perfil");
+        }
+
+        showForm(new FormHome());
+        menu.setFont(new java.awt.Font("sansserif", 1, 14));
+        menu.applay(this);
+        final TelaPrincipal telaPrincipal = this;
+        menu.addEvent(new MenuEvent() {
+            @Override
+            public void selected(int index, int subIndex, boolean menuItem) {
+                System.out.println(adm);
+                System.out.println(logged);
+                System.out.println(idUsuario);
+                if (menuItem && index == 0 && subIndex == 0) {
+                    showForm(new FormHome());
+                } else if (menuItem && index == 1 && subIndex == 1) {
+                    showForm(new FormHardware());
+                } else if (menuItem && index == 1 && subIndex == 2) {
+                    showForm(new FormPerifirico());
+                } else if (menuItem && index == 1 && subIndex == 3) {
+                    showForm(new FormGames());
+                } else if (menuItem && index == 1 && subIndex == 4) {
+                    showForm(new FormCasaIntel());
+                }
+
+                // Lógica para mostrar o formulário correto com base no estado do usuário
+                if (logged == false) {
+                    if (menuItem && index == 2 && subIndex == 1) {
+                        showForm(new FormEntrar(telaPrincipal));
+                    }
                 } else {
-                    if (logged == false) {
-                        if (menuItem && index == 2 && subIndex == 1) {
-                            showForm(new FormEntrar());
-                        }
-                    } else {
-                        if (menuItem && index == 2 && subIndex == 1) {
-                            showForm(new FormPerfil());
-                        }
+                    if (menuItem && index == 2 && subIndex == 1 && !adm) {
+                        showForm(new FormPerfil());
+                    }
+                }
+
+                // Lógica para mostrar os formulários de administração
+                if (adm == true) {
+                    if (menuItem && index == 2 && subIndex == 1) {
+                        showForm(new FormCadastroProduto());
+                    } else if (menuItem && index == 2 && subIndex == 2) {
+                        showForm(new FormEdicaoProduto());
+                    } else if (menuItem && index == 2 && subIndex == 3) {
+                        showForm(new FormGerenciaUsuario());
                     }
                 }
             }
         });
     }
 
-    private void showForm(Component com) {
+    public void showForm(Component com) {
         main.removeAll();
         main.add(com);
         main.repaint();
         main.revalidate();
+    }
+
+    public void atualizarVariaveis() {
+        this.adm = UsuarioDTO.isAdmin();
+        this.logged = UsuarioDTO.isLogged();
+        this.idUsuario = UsuarioDTO.getIdUsuario();
     }
 
     @SuppressWarnings("unchecked")

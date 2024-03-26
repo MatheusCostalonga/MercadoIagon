@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.bean;
 
-/**
- *
- * @author carlo
- */
 public class UsuarioDTO {
+
     private int id_usuario;
     private String usuario;
-    private String senha;      
+    private String senha;
     private String nome;
     private String email;
     private String telefone;
@@ -20,8 +12,10 @@ public class UsuarioDTO {
     private String data_nascimento;
     private String cep;
     private String cpf;
+    private static boolean admin;
     private boolean adm;
-    private static int id;
+    private static boolean logged;
+    private static int idUsuario;
 
     public UsuarioDTO() {
     }
@@ -120,6 +114,14 @@ public class UsuarioDTO {
         this.cpf = cpf;
     }
 
+    public static boolean isAdmin() {
+        return admin;
+    }
+
+    public static void setAdmin(boolean admin) {
+        UsuarioDTO.admin = admin;
+    }
+
     public boolean isAdm() {
         return adm;
     }
@@ -128,14 +130,20 @@ public class UsuarioDTO {
         this.adm = adm;
     }
 
-    public static int getId() {
-        return id;
+    public static boolean isLogged() {
+        return logged;
     }
 
-    public static void setId(int id) {
-        UsuarioDTO.id = id;
+    public static void setLogged(boolean logged) {
+        UsuarioDTO.logged = logged;
     }
 
-    
+    public static int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public static void setIdUsuario(int idUsuario) {
+        UsuarioDTO.idUsuario = idUsuario;
+    }
 
 }
