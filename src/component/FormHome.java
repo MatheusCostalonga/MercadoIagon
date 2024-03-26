@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -19,10 +20,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.border.CompoundBorder;
 import model.DAO.ProdutoDAO;
 import model.bean.CarrinhoDTO;
 import model.bean.CarrinhoSingleton;
 import model.bean.ProdutoDTO;
+import org.jdesktop.swingx.border.DropShadowBorder;
 import raven.glasspanepopup.GlassPanePopup;
 import raven.toast.Notifications;
 
@@ -43,7 +46,12 @@ public class FormHome extends javax.swing.JPanel {
             JPanel newPanel = new JPanel();
             newPanel.setBackground(Color.white);
             newPanel.setPreferredSize(new Dimension(150, 400)); // Definindo o tamanho do novo painel
-            newPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+            DropShadowBorder shadowBorder = new DropShadowBorder();
+            CompoundBorder compoundBorder = BorderFactory.createCompoundBorder(
+                    shadowBorder,
+                    BorderFactory.createEmptyBorder(5, 5, 5, 5) // Adiciona um espaço interno para evitar que a sombra seja cortada
+            );
+            newPanel.setBorder(compoundBorder);
             newPanel.setLayout(new BorderLayout());
 
             // Adicionando a imagem
@@ -57,9 +65,12 @@ public class FormHome extends javax.swing.JPanel {
             spinner.setMaximumSize(new Dimension(10, 30)); // Definir a largura máxima desejada
 
             JLabel labelNome = new JLabel(produto.getNome());
+            labelNome.setFont(new Font("Segoe UI", Font.BOLD, 16));
             JLabel labelPreco = new JLabel("Preço: R$ " + produto.getValor());
+            labelPreco.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 
             JButton btnAdicionarAoCarrinho = new JButton("Adicionar ao Carrinho");
+            btnAdicionarAoCarrinho.setFont(new Font("Segoe UI", Font.BOLD, 16));
 //            btnAdicionarAoCarrinho.setEnabled(false);
 
             btnAdicionarAoCarrinho.addActionListener(new ActionListener() {
@@ -71,7 +82,7 @@ public class FormHome extends javax.swing.JPanel {
                     carrinhoItem.setPreco_unitario(produto.getValor());
                     carrinhoItem.setQuantidade(qtdProduto);
                     CarrinhoSingleton.getInstance().adicionarItem(carrinhoItem);
-                    JOptionPane.showMessageDialog(null, "Produto adicionado ao carrinho!");
+                    Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "PRODUTO ADICIONADO AO CARRINHO!");
                 }
             });
 
@@ -115,6 +126,8 @@ public class FormHome extends javax.swing.JPanel {
         ScrollPane = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         btnCarrinho = new raven.glasspanepopup.Button();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1889, 992));
 
@@ -135,6 +148,9 @@ public class FormHome extends javax.swing.JPanel {
         ScrollPane.setViewportView(jPanel3);
 
         btnCarrinho.setBackground(new java.awt.Color(255, 255, 255));
+        org.jdesktop.swingx.border.IconBorder iconBorder1 = new org.jdesktop.swingx.border.IconBorder();
+        iconBorder1.setPadding(0);
+        btnCarrinho.setBorder(iconBorder1);
         btnCarrinho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/carrinho.png"))); // NOI18N
         btnCarrinho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,13 +158,22 @@ public class FormHome extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("DESTAQUES");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/estrela.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(ScrollPane)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
@@ -156,7 +181,10 @@ public class FormHome extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(55, Short.MAX_VALUE)
-                .addComponent(btnCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCarrinho, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 872, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -170,6 +198,8 @@ public class FormHome extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPane;
     private raven.glasspanepopup.Button btnCarrinho;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

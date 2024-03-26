@@ -19,7 +19,7 @@ import raven.toast.Notifications;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    private boolean adm = true;
+    private boolean adm = false;
     private boolean logged = false;
     private int idUsuario;
 
@@ -96,6 +96,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         main = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Mercado Iagon");
 
         main.setBackground(new java.awt.Color(255, 255, 255));
         main.setLayout(new java.awt.BorderLayout());
