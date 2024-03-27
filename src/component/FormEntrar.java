@@ -47,12 +47,13 @@ public class FormEntrar extends javax.swing.JPanel {
         );
 
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder1 = new org.jdesktop.swingx.border.DropShadowBorder();
+        dropShadowBorder1.setShadowSize(15);
         dropShadowBorder1.setShowLeftShadow(true);
         dropShadowBorder1.setShowTopShadow(true);
         jPanel3.setBorder(dropShadowBorder1);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnInscrever.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        btnInscrever.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         btnInscrever.setText("Inscrever-se");
         btnInscrever.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInscrever.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -60,13 +61,13 @@ public class FormEntrar extends javax.swing.JPanel {
                 btnInscreverMouseClicked(evt);
             }
         });
-        jPanel3.add(btnInscrever, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 570, -1, -1));
+        jPanel3.add(btnInscrever, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 610, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
-        jLabel6.setText("Não tem uma conta?");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 570, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
+        jLabel6.setText("Não Tem Uma Conta?");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 610, -1, -1));
 
-        btnEntrar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        btnEntrar.setFont(new java.awt.Font("Cambria Math", 1, 20)); // NOI18N
         btnEntrar.setText("ENTRAR");
         btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,10 +75,10 @@ public class FormEntrar extends javax.swing.JPanel {
                 btnEntrarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, -1, -1));
+        jPanel3.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, 280, 50));
 
         txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jPanel3.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 260, -1));
+        jPanel3.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, 260, -1));
 
         fechado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_invisible_25px_1.png"))); // NOI18N
         fechado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -86,26 +87,26 @@ public class FormEntrar extends javax.swing.JPanel {
                 fechadoMouseClicked(evt);
             }
         });
-        jPanel3.add(fechado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, -1));
+        jPanel3.add(fechado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, -1, -1));
 
         txtUser.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jPanel3.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 260, -1));
+        jPanel3.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 260, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_user_25px.png"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/IAGON-Photoroom.png-Photoroom.png"))); // NOI18N
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cambria Math", 1, 30)); // NOI18N
         jLabel2.setText("Senha");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cambria Math", 1, 30)); // NOI18N
         jLabel1.setText("Usuário");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
 
         aberto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_eye_25px_3.png"))); // NOI18N
         aberto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -114,7 +115,7 @@ public class FormEntrar extends javax.swing.JPanel {
                 abertoMouseClicked(evt);
             }
         });
-        jPanel3.add(aberto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, -1));
+        jPanel3.add(aberto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, -1, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,21 +124,20 @@ public class FormEntrar extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(423, 423, 423)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(238, 238, 238)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(619, Short.MAX_VALUE))
+                .addGap(208, 208, 208)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(850, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addGap(962, 962, 962)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(225, 225, 225))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -148,9 +148,7 @@ public class FormEntrar extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 69, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
