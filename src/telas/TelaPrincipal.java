@@ -108,9 +108,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menu.addEvent(new MenuEvent() {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
-                System.out.println(adm);
-                System.out.println(logged);
-                System.out.println(idUsuario);
                 if (menuItem && index == 0 && subIndex == 0) {
                     showForm(new FormHome(telaPrincipal));
                 } else if (menuItem && index == 1 && subIndex == 1) {
