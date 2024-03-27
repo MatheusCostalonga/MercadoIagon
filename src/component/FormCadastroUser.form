@@ -62,9 +62,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel4" min="-2" pref="171" max="-2" attributes="0"/>
-                      <EmptySpace pref="73" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel5" min="-2" pref="681" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="68" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -91,7 +91,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel3">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Cambria Math" size="20" style="1"/>
+                      <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
                   </Properties>
@@ -104,7 +104,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel9">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Cambria Math" size="20" style="1"/>
+                      <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Senha"/>
                   </Properties>
@@ -115,16 +115,26 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtUser">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="20" y="80" width="250" height="50"/>
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSenha">
+                <Component class="javax.swing.JPasswordField" name="txtSenha">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="330" y="80" width="250" height="50"/>
+                      <AbsoluteConstraints x="340" y="80" width="220" height="50"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -139,6 +149,7 @@
                         <LineBorder roundedCorners="true" thickness="2"/>
                       </Border>
                       <Font PropertyName="font" name="Cambria Math" size="30" style="1"/>
+                      <Color PropertyName="color" blue="33" green="33" red="33" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -151,7 +162,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Cambria Math" size="20" style="1"/>
+                      <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Nome"/>
                   </Properties>
@@ -162,9 +173,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtNome">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeActionPerformed"/>
-                  </Events>
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="40" y="130" width="250" height="50"/>
@@ -174,7 +187,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel5">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Cambria Math" size="20" style="1"/>
+                      <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Nascimento"/>
                   </Properties>
@@ -186,6 +199,9 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtNascimento">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Cursor em Forma de M&#xe3;o"/>
                     </Property>
@@ -199,7 +215,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel10">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Cambria Math" size="20" style="1"/>
+                      <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Telefone"/>
                   </Properties>
@@ -210,9 +226,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtTelefone">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefoneActionPerformed"/>
-                  </Events>
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="320" y="260" width="250" height="50"/>
@@ -220,6 +238,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtEndereco">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="40" y="260" width="250" height="50"/>
@@ -229,7 +252,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Cambria Math" size="20" style="1"/>
+                      <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
                   </Properties>
@@ -242,7 +265,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Cambria Math" size="20" style="1"/>
+                      <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Email"/>
                   </Properties>
@@ -253,9 +276,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtEmail">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
-                  </Events>
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="40" y="390" width="250" height="50"/>
@@ -263,9 +288,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCpf">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCpfActionPerformed"/>
-                  </Events>
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="180" y="500" width="250" height="50"/>
@@ -275,7 +302,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Cambria Math" size="20" style="1"/>
+                      <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Cpf"/>
                   </Properties>
@@ -288,7 +315,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel7">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Cambria Math" size="20" style="1"/>
+                      <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Cep"/>
                   </Properties>
@@ -299,6 +326,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCep">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="320" y="390" width="250" height="50"/>
@@ -307,9 +339,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="txtCriar">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Cambria Math" size="18" style="1"/>
                     </Property>
@@ -330,7 +359,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel11">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Cambria Math" size="16" style="1"/>
+                      <Font name="Segoe UI" size="16" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="J&#xe1; Tem Uma Conta?"/>
                   </Properties>
@@ -343,7 +372,7 @@
                 <Component class="javax.swing.JLabel" name="btnEntrar">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Cambria Math" size="16" style="1"/>
+                      <Font name="Segoe UI" size="16" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Entrar"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -385,7 +414,7 @@
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="40" style="1"/>
+              <Font name="Segoe UI" size="40" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Fa&#xe7;a Cadastro"/>
           </Properties>
@@ -398,7 +427,7 @@
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="40" style="1"/>
+              <Font name="Segoe UI" size="40" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="E Entre Para Nosso Time!"/>
           </Properties>

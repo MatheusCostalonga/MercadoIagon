@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.border.CompoundBorder;
 import model.DAO.ProdutoDAO;
 import model.bean.CarrinhoDTO;
 import model.bean.CarrinhoSingleton;
@@ -53,14 +51,11 @@ public class FormHardware extends javax.swing.JPanel {
 
         for (ProdutoDTO produto : produtos) {
             JPanel newPanel = new JPanel();
-            newPanel.setBackground(Color.white);
             newPanel.setPreferredSize(new Dimension(150, 500)); // Definindo o tamanho do novo painel
             DropShadowBorder shadowBorder = new DropShadowBorder();
-            CompoundBorder compoundBorder = BorderFactory.createCompoundBorder(
-                    shadowBorder,
-                    BorderFactory.createEmptyBorder(5, 5, 5, 5) // Adiciona um espaço interno para evitar que a sombra seja cortada
-            );
-            newPanel.setBorder(compoundBorder);
+            shadowBorder.setShowLeftShadow(true);
+            shadowBorder.setShowTopShadow(true);
+            newPanel.setBorder(shadowBorder);
             newPanel.setLayout(new BorderLayout());
 
             // Adicionando a imagem
@@ -142,7 +137,7 @@ public class FormHardware extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
-        btnCarrinho3.setBackground(new java.awt.Color(233, 233, 233));
+        btnCarrinho3.setBackground(new java.awt.Color(51, 51, 51));
         btnCarrinho3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/carrinho.png"))); // NOI18N
         btnCarrinho3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,19 +177,23 @@ public class FormHardware extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCarrinho3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addGap(33, 33, 33))
             .addComponent(ScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+                .addContainerGap(71, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCarrinho3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnCarrinho3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 883, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

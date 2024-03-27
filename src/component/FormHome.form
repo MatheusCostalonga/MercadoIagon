@@ -84,7 +84,7 @@
     <Component class="raven.glasspanepopup.Button" name="btnCarrinho">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e9" green="e9" red="e9" type="rgb"/>
+          <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <PropertyBean type="org.jdesktop.swingx.border.IconBorder">

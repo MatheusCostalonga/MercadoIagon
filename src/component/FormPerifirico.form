@@ -18,27 +18,27 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="ScrollPane" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="btnCarrinho" min="-2" pref="60" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="btnCarrinho" min="-2" pref="56" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCarrinho" min="-2" pref="56" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="ScrollPane" pref="1069" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+              <Component id="ScrollPane" min="-2" pref="1063" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,7 +79,7 @@
     <Component class="raven.glasspanepopup.Button" name="btnCarrinho">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e9" green="e9" red="e9" type="rgb"/>
+          <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/assets/carrinho.png"/>

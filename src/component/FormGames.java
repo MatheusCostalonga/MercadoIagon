@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.border.CompoundBorder;
 import model.DAO.ProdutoDAO;
 import model.bean.CarrinhoDTO;
 import model.bean.CarrinhoSingleton;
@@ -55,14 +53,11 @@ public class FormGames extends javax.swing.JPanel {
 
         for (ProdutoDTO produto : produtos) {
             JPanel newPanel = new JPanel();
-            newPanel.setBackground(Color.white);
             newPanel.setPreferredSize(new Dimension(150, 500)); // Definindo o tamanho do novo painel
             DropShadowBorder shadowBorder = new DropShadowBorder();
-            CompoundBorder compoundBorder = BorderFactory.createCompoundBorder(
-                    shadowBorder,
-                    BorderFactory.createEmptyBorder(5, 5, 5, 5) // Adiciona um espaço interno para evitar que a sombra seja cortada
-            );
-            newPanel.setBorder(compoundBorder);
+            shadowBorder.setShowLeftShadow(true);
+            shadowBorder.setShowTopShadow(true);
+            newPanel.setBorder(shadowBorder);
             newPanel.setLayout(new BorderLayout());
 
             // Adicionando a imagem
@@ -160,7 +155,7 @@ public class FormGames extends javax.swing.JPanel {
 
         ScrollPane.setViewportView(jPanel3);
 
-        btnCarrinho5.setBackground(new java.awt.Color(233, 233, 233));
+        btnCarrinho5.setBackground(new java.awt.Color(51, 51, 51));
         btnCarrinho5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/carrinho.png"))); // NOI18N
         btnCarrinho5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

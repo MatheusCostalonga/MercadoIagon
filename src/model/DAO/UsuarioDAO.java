@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.bean.UsuarioDTO;
+import raven.toast.Notifications;
 
 /**
  *
@@ -54,25 +55,24 @@ public class UsuarioDAO {
         return usuarios;
     }
 
-    public void inserir(UsuarioDTO login) {
+    public void inserir(UsuarioDTO objUsuario) {
         try {
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
-            stmt = conexao.prepareStatement("INSERT INTO usuarios (nome, email, senha, usuario, telefone, endereco, data_nascimento, cpf, cep, adm) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            stmt.setString(1, login.getNome());
-            stmt.setString(2, login.getEmail());
-            stmt.setString(3, login.getSenha());
-            stmt.setString(4, login.getUsuario());
-            stmt.setString(5, login.getTelefone());
-            stmt.setString(6, login.getEndereco());
-            stmt.setString(7, login.getData_nascimento());
-            stmt.setString(8, login.getCpf());
-            stmt.setString(9, login.getCep());
-            stmt.setBoolean(10, login.isAdm());
+            stmt = conexao.prepareStatement("INSERT INTO usuarios (nome, email, senha, usuario, telefone, endereco, data_nascimento, cpf, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt.setString(1, objUsuario.getNome());
+            stmt.setString(2, objUsuario.getEmail());
+            stmt.setString(3, objUsuario.getSenha());
+            stmt.setString(4, objUsuario.getUsuario());
+            stmt.setString(5, objUsuario.getTelefone());
+            stmt.setString(6, objUsuario.getEndereco());
+            stmt.setString(7, objUsuario.getData_nascimento());
+            stmt.setString(8, objUsuario.getCpf());
+            stmt.setString(9, objUsuario.getCep());
             stmt.executeUpdate();
             stmt.close();
             conexao.close();
-            JOptionPane.showMessageDialog(null, "Campos inseridos com sucesso!!!");
+            Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "USUARIO CADASTRADO COM SUCESSO!");
         } catch (SQLException erro) {
             erro.printStackTrace();
         }

@@ -53,7 +53,7 @@ public class FormEntrar extends javax.swing.JPanel {
         jPanel3.setBorder(dropShadowBorder1);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnInscrever.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
+        btnInscrever.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnInscrever.setText("Inscrever-se");
         btnInscrever.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInscrever.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -63,7 +63,7 @@ public class FormEntrar extends javax.swing.JPanel {
         });
         jPanel3.add(btnInscrever, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 610, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel6.setText("Não Tem Uma Conta?");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 610, -1, -1));
 
@@ -100,13 +100,13 @@ public class FormEntrar extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/IAGON-Photoroom.png-Photoroom.png"))); // NOI18N
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Cambria Math", 1, 30)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("Senha");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Cambria Math", 1, 30)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Usuário");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, -1));
 
         aberto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_eye_25px_3.png"))); // NOI18N
         aberto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -154,7 +154,7 @@ public class FormEntrar extends javax.swing.JPanel {
 
     private void btnInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscreverMouseClicked
         if (telaPrincipal != null) {
-            telaPrincipal.showForm(new FormCadastroUser());
+            telaPrincipal.showForm(new FormCadastroUser(telaPrincipal));
         }
     }//GEN-LAST:event_btnInscreverMouseClicked
 

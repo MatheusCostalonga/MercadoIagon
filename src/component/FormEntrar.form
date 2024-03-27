@@ -89,7 +89,7 @@
             <Component class="javax.swing.JLabel" name="btnInscrever">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Cambria Math" size="16" style="1"/>
+                  <Font name="Segoe UI" size="16" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Inscrever-se"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -108,7 +108,7 @@
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Cambria Math" size="16" style="1"/>
+                  <Font name="Segoe UI" size="16" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="N&#xe3;o Tem Uma Conta?"/>
               </Properties>
@@ -212,26 +212,26 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Cambria Math" size="30" style="1"/>
+                  <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Senha"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="210" y="430" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="220" y="430" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Cambria Math" size="30" style="1"/>
+                  <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="200" y="320" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="210" y="320" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
