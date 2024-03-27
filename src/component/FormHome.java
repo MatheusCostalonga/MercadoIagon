@@ -24,6 +24,7 @@ import model.DAO.ProdutoDAO;
 import model.bean.CarrinhoDTO;
 import model.bean.CarrinhoSingleton;
 import model.bean.ProdutoDTO;
+import model.bean.UsuarioDTO;
 import org.jdesktop.swingx.border.DropShadowBorder;
 import raven.glasspanepopup.GlassPanePopup;
 import raven.toast.Notifications;
@@ -31,6 +32,7 @@ import telas.TelaPrincipal;
 
 public class FormHome extends javax.swing.JPanel {
 
+    private boolean adm = UsuarioDTO.isAdmin();
     List<CarrinhoDTO> carrinhoItens = new ArrayList<>();
     private TelaPrincipal telaPrincipal;
 
@@ -38,6 +40,12 @@ public class FormHome extends javax.swing.JPanel {
         initComponents();
         exibirProdutos();
         this.telaPrincipal = telaPrincipal;
+        
+        if(adm){
+                btnCarrinho.setEnabled(false);
+            }else{
+                btnCarrinho.setEnabled(true);
+            }
     }
 
     public void exibirProdutos() {
@@ -70,11 +78,14 @@ public class FormHome extends javax.swing.JPanel {
             labelNome.setFont(new Font("Segoe UI", Font.BOLD, 16));
             JLabel labelPreco = new JLabel("Preço: R$ " + produto.getValor());
             labelPreco.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-
+            
             JButton btnAdicionarAoCarrinho = new JButton("Adicionar ao Carrinho");
             btnAdicionarAoCarrinho.setFont(new Font("Segoe UI", Font.BOLD, 16));
-//            btnAdicionarAoCarrinho.setEnabled(false);
-
+            if(adm){
+                btnAdicionarAoCarrinho.setEnabled(false);
+            }else{
+                btnAdicionarAoCarrinho.setEnabled(true);
+            }
             btnAdicionarAoCarrinho.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     CarrinhoDTO carrinhoItem = new CarrinhoDTO();

@@ -194,15 +194,18 @@ public class FormFinalizar extends javax.swing.JPanel {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "PREENCHA OS CAMPOS CORRETAMENTE!");
             return;
         }
-        Object[] options = {"Confirmar", "Cancelar"};
-        JOptionPane.showOptionDialog(null, "Clique Confirmar para continuar", "Informação", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
-        PedidoDTO objPedido = new PedidoDTO();
-        objPedido.setEndereco(txtEndereco.getText());
-        objPedido.setMetodoPagamento((String) cbxMetodo.getSelectedItem());
-        objPedido.setUsuarioId(UsuarioDTO.getIdUsuario());
-        objPedido.setValorTotal((float) total);
-        PedidoDAO objPedidoDao = new PedidoDAO();
-        objPedidoDao.inserePedido(objPedido);
+        int option = JOptionPane.showConfirmDialog(null, "Deseja confirmar o pedido?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            PedidoDTO objPedido = new PedidoDTO();
+            objPedido.setEndereco(txtEndereco.getText());
+            objPedido.setMetodoPagamento((String) cbxMetodo.getSelectedItem());
+            objPedido.setUsuarioId(UsuarioDTO.getIdUsuario());
+            objPedido.setValorTotal((float) total);
+            PedidoDAO objPedidoDao = new PedidoDAO();
+            objPedidoDao.inserePedido(objPedido);
+            CarrinhoSingleton.getInstance().limparCarrinho();
+            telaPrincipal.showForm(new FormHome(telaPrincipal));
+        }
     }//GEN-LAST:event_brnConfirmarActionPerformed
 
 

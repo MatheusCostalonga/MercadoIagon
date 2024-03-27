@@ -1,12 +1,16 @@
 package component;
 
+import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import model.bean.CarrinhoDTO;
 import model.bean.CarrinhoSingleton;
 import model.bean.UsuarioDTO;
 import raven.glasspanepopup.GlassPanePopup;
+import raven.toast.Notifications;
 import telas.TelaPrincipal;
 
 public class FormCarrinho extends javax.swing.JPanel {
@@ -19,6 +23,31 @@ public class FormCarrinho extends javax.swing.JPanel {
         initComponents();
         carregarItensCarrinho();
         this.telaPrincipal = telaPrincipal;
+
+        lblDeleta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDeletaMouseClicked(evt);
+            }
+        });
+    }
+
+    private void lblDeletaMouseClicked(java.awt.event.MouseEvent evt) {
+        int rowIndex = tblCarrinho.getSelectedRow();
+        if (rowIndex != -1) {
+            removerItemCarrinho(rowIndex);
+        } else {
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "SELECIONE UM ITEM!");
+        }
+    }
+
+    public void removerItemCarrinho(int rowIndex) {
+        List<CarrinhoDTO> carrinhoItens = CarrinhoSingleton.getInstance().getCarrinhoItens();
+        if (rowIndex >= 0 && rowIndex < carrinhoItens.size()) {
+            carrinhoItens.remove(rowIndex);
+            carregarItensCarrinho();
+        } else {
+            System.out.println("Índice da linha selecionada fora dos limites da lista de carrinho.");
+        }
     }
 
     public void carregarItensCarrinho() {
@@ -36,6 +65,7 @@ public class FormCarrinho extends javax.swing.JPanel {
         Object[] totalRow = {"Total", "", "", totalFormatado};
         model.addRow(totalRow);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -45,8 +75,11 @@ public class FormCarrinho extends javax.swing.JPanel {
         tblCarrinho = new javax.swing.JTable();
         btnContinuar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        lblDeleta = new javax.swing.JLabel();
 
-        tblCarrinho.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblCarrinho.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         tblCarrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -71,6 +104,8 @@ public class FormCarrinho extends javax.swing.JPanel {
             tblCarrinho.getColumnModel().getColumn(3).setMaxWidth(100);
         }
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 51, 440, 486));
+
         btnContinuar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
         btnContinuar.setText("CONTINUAR COMPRA");
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
@@ -78,37 +113,15 @@ public class FormCarrinho extends javax.swing.JPanel {
                 btnContinuarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 570, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel3.setText("CARRINHO");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 13, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(btnContinuar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(173, 173, 173))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnContinuar)
-                .addContainerGap())
-        );
+        lblDeleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/excluir.png"))); // NOI18N
+        lblDeleta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(lblDeleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 560, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -121,12 +134,16 @@ public class FormCarrinho extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        if(CarrinhoSingleton.getInstance().getCarrinhoItens().isEmpty()){
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "CARRINHO FAZIO!");
+            return;
+        }
         if (logged) {
             GlassPanePopup.closePopupAll();
             telaPrincipal.showForm(new FormFinalizar(telaPrincipal));
@@ -138,12 +155,12 @@ public class FormCarrinho extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnContinuarActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDeleta;
     private javax.swing.JTable tblCarrinho;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,4 +26,9 @@ public class CarrinhoSingleton {
     public void adicionarItem(CarrinhoDTO item) {
         carrinhoItens.add(item);
     }
+
+    public void limparCarrinho() {
+        carrinhoItens.clear();
+    }
+
 }
