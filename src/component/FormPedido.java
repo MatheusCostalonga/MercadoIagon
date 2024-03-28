@@ -171,6 +171,7 @@ public class FormPedido extends javax.swing.JPanel {
             PedidoDTO objPedido = new PedidoDTO();
             PedidoDAO objPedidoDao = new PedidoDAO();
             objPedido.setIdPedido(idPedido);
+            objPedidoDao.deletaPedidoProduto(objPedido);
             objPedidoDao.deletaPedido(objPedido);
             leitura();
             Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "PEDIDO CANCELADO!");

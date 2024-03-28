@@ -60,6 +60,23 @@ public class PedidoDAO {
         }
     }
 
+    public void deletaPedidoProduto(PedidoDTO objpedido) {
+        String sql = "DELETE FROM pedidos_produtos WHERE pedido_id = ?";
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, objpedido.getIdPedido());
+
+            stmt.executeUpdate();
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            System.out.println("Erro delete pedido´produto: " + e);
+        }
+    }
+
     public void updatePedido(PedidoDTO objPedido) {
         String sql = "UPDATE pedidos SET status_pagamento = ? WHERE id_pedido = ?";
         try {
@@ -68,12 +85,12 @@ public class PedidoDAO {
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, objPedido.getStatus());
             stmt.setInt(2, objPedido.getIdPedido());
-            
+
             stmt.executeUpdate();
             stmt.close();
             conexao.close();
         } catch (SQLException e) {
-            System.out.println("Erro em atulizar pedidos: "+ e);
+            System.out.println("Erro em atulizar pedidos: " + e);
         }
     }
 
