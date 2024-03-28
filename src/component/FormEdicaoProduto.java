@@ -12,12 +12,13 @@ import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import model.DAO.CategoriaDAO;
 import model.DAO.ProdutoDAO;
+import model.bean.CategoriaDTO;
 import model.bean.ProdutoDTO;
 import raven.toast.Notifications;
 
@@ -26,22 +27,24 @@ public class FormEdicaoProduto extends javax.swing.JPanel {
     private FileInputStream fis;
     private int tamanho;
     int idProduto = 0;
+    List<ProdutoDTO> produtos;
 
     public FormEdicaoProduto() {
         initComponents();
         readJtable();
         restaurarDadosComboboxCategoria();
         ProdutoDAO objProdutoDao = new ProdutoDAO();
-        List<ProdutoDTO> produtos = objProdutoDao.leitura();
+        
         tblProduto.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                List<ProdutoDTO> produtos = objProdutoDao.leitura();  
                 int setar = tblProduto.getSelectedRow();
                 if (setar >= 0) {
                     idProduto = (int) tblProduto.getModel().getValueAt(setar, 0);
                     txtNome.setText((String) tblProduto.getModel().getValueAt(setar, 1));
-//                    cbxCategoria.setSelectedItem((String) tblProduto.getModel().getValueAt(setar, 2));
-                    spinPreco.setValue((float) tblProduto.getModel().getValueAt(setar, 2));
+                    cbxCategoria.setSelectedItem((String) tblProduto.getModel().getValueAt(setar, 2));
+                    spinPreco.setValue((float) tblProduto.getModel().getValueAt(setar, 3));
                     for (ProdutoDTO objProduto : produtos) {
                         if (objProduto.getIdProduto() == idProduto) {
                             ImageIcon icon = new ImageIcon(objProduto.getImagem());
@@ -53,6 +56,7 @@ public class FormEdicaoProduto extends javax.swing.JPanel {
                     }
                 }
             }
+
         });
     }
 
@@ -79,16 +83,28 @@ public class FormEdicaoProduto extends javax.swing.JPanel {
         DefaultTableModel modelo = (DefaultTableModel) tblProduto.getModel();
         modelo.setNumRows(0);
         ProdutoDAO objProdutoDao = new ProdutoDAO();
+        CategoriaDAO objCategoriaDao = new CategoriaDAO();
+        List<CategoriaDTO> categorias = objCategoriaDao.leitura();
         List<ProdutoDTO> produtos = objProdutoDao.leitura();
         for (ProdutoDTO p : produtos) {
+            CategoriaDTO objCategoria = encontrarCategoria(categorias, p.getCategoriaId());
             modelo.addRow(new Object[]{
                 p.getIdProduto(),
                 p.getNome(),
+                objCategoria.getNome(),
                 p.getValor()
             });
         }
     }
 
+    private CategoriaDTO encontrarCategoria(List<CategoriaDTO> categorias, int idCategoria) {
+        for (CategoriaDTO objCategoria : categorias) {
+            if (objCategoria.getIdCategoria() == idCategoria) {
+                return objCategoria;
+            }
+        }
+        return null;
+    }
     Vector<Integer> id_categoria = new Vector<Integer>();
 
     private void restaurarDadosComboboxCategoria() {
@@ -131,6 +147,7 @@ public class FormEdicaoProduto extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         lblImg = new javax.swing.JLabel();
         btnImg = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("EDIÇÂO DE PRODUTOS");
@@ -147,11 +164,11 @@ public class FormEdicaoProduto extends javax.swing.JPanel {
 
             },
             new String [] {
-                "id", "nome", "valor"
+                "id", "Nome", "Categoria", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -197,11 +214,6 @@ public class FormEdicaoProduto extends javax.swing.JPanel {
 
         cbxCategoria.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar" }));
-        cbxCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxCategoriaActionPerformed(evt);
-            }
-        });
         jPanel2.add(cbxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
@@ -220,7 +232,7 @@ public class FormEdicaoProduto extends javax.swing.JPanel {
         dropShadowBorder2.setShowLeftShadow(true);
         dropShadowBorder2.setShowTopShadow(true);
         lblImg.setBorder(dropShadowBorder2);
-        jPanel2.add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 90, -1, -1));
+        jPanel2.add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 90, -1, 280));
 
         btnImg.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
         btnImg.setText("CARREGAR IMAGEM");
@@ -229,27 +241,37 @@ public class FormEdicaoProduto extends javax.swing.JPanel {
                 btnImgActionPerformed(evt);
             }
         });
-        jPanel2.add(btnImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 390, -1, -1));
+        jPanel2.add(btnImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 420, -1, -1));
+
+        btnAtualizar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        btnAtualizar.setText("ATUALIZAR");
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 560, 140, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(1101, 1101, 1101)
-                .addComponent(jLabel1)
-                .addGap(781, 781, 781))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(295, 295, 295))
+                .addContainerGap(429, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGap(585, 585, 585)))
+                .addGap(279, 279, 279))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(110, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(115, 115, 115)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -262,47 +284,13 @@ public class FormEdicaoProduto extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImgActionPerformed
         carregarFoto();
     }//GEN-LAST:event_btnImgActionPerformed
-
-    private void cbxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCategoriaActionPerformed
-        if (txtNome.getText().trim().equals("") || (float) spinPreco.getValue() == 0) {
-            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "PREENCHA TODOS OS CAMPOS CORRETAMENTE!");
-            return;
-        } else if (cbxCategoria.getSelectedItem().equals("Selecionar")) {
-            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "SELECIONE UMA CATEGORIA!");
-            return;
-        } else if (tamanho == 0) {
-            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "SELECIONE UMA FOTO!");
-            return;
-        } else {
-            String sql = "INSERT INTO produtos(nome,imagem,valor,categoria_id)values(?,?,?,?)";
-            try {
-                Connection conexao = Conexao.conectar();
-                PreparedStatement stmt = null;
-                stmt = conexao.prepareStatement(sql);
-                stmt.setString(1, txtNome.getText());
-                stmt.setBlob(2, fis, tamanho);
-                stmt.setFloat(3, (float) spinPreco.getValue());
-                stmt.setInt(4, id_categoria.get(cbxCategoria.getSelectedIndex() - 1));
-
-                stmt.executeUpdate();
-                stmt.close();
-                conexao.close();
-                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_RIGHT, "CADASTRO REALIZADO COM SUCESSO!");
-            } catch (SQLException e) {
-                System.out.println(" cadastro de produto: " + e);
-            }
-        }
-        limparCampos();
-    }//GEN-LAST:event_cbxCategoriaActionPerformed
 
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
         readJtable();
@@ -316,8 +304,43 @@ public class FormEdicaoProduto extends javax.swing.JPanel {
 
     }//GEN-LAST:event_campoBuscaActionPerformed
 
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        if (txtNome.getText().trim().equals("") || (float) spinPreco.getValue() == 0) {
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "PREENCHA TODOS OS CAMPOS CORRETAMENTE!");
+            return;
+        } else if (cbxCategoria.getSelectedItem().equals("Selecionar")) {
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "SELECIONE UMA CATEGORIA!");
+            return;
+        } else if (tamanho == 0) {
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "SELECIONE UMA FOTO!");
+            return;
+        } else {
+            String sql = "UPDATE produtos SET categoria_id = ?, nome = ?, imagem = ?, valor = ? WHERE id_produto = ?";
+            try {
+                Connection conexao = Conexao.conectar();
+                PreparedStatement stmt = null;
+                stmt = conexao.prepareStatement(sql);
+                stmt.setInt(1, id_categoria.get(cbxCategoria.getSelectedIndex() - 1));
+                stmt.setString(2, txtNome.getText());
+                stmt.setBlob(3, fis, tamanho);
+                stmt.setFloat(4, (float) spinPreco.getValue());
+                stmt.setInt(5, idProduto);
+
+                stmt.executeUpdate();
+                stmt.close();
+                conexao.close();
+                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "PRODUTO ATUALIZADO COM SUCESSO!");
+            } catch (SQLException e) {
+                System.out.println("Erro update de produto: " + e);
+            }
+        }
+        readJtable();
+        limparCampos();
+        idProduto = 0;
+    }//GEN-LAST:event_btnAtualizarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnImg;
     private javax.swing.JButton buttonBuscar;
     private javax.swing.JTextField campoBusca;

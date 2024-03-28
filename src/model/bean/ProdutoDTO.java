@@ -3,21 +3,24 @@ package model.bean;
 import java.sql.Blob;
 
 public class ProdutoDTO {
+
     private int idProduto;
     private String nome;
     private byte[] imagem;
     private Blob imgBlob;
     private float valor;
-    
+    private int categoriaId;
+
     public ProdutoDTO() {
     }
 
-    public ProdutoDTO(int idProduto, String nome, byte[] imagem, Blob imgBlob, float valor) {
+    public ProdutoDTO(int idProduto, String nome, byte[] imagem, Blob imgBlob, float valor, int categoriaId) {
         this.idProduto = idProduto;
         this.nome = nome;
         this.imagem = imagem;
         this.imgBlob = imgBlob;
         this.valor = valor;
+        this.categoriaId = categoriaId;
     }
 
     public int getIdProduto() {
@@ -59,6 +62,13 @@ public class ProdutoDTO {
     public void setValor(float valor) {
         this.valor = valor;
     }
-    
-    
+
+    public int getCategoriaId() {
+        return categoriaId;
+    }
+
+    public void setCategoriaId(int categoriaId) {
+        this.categoriaId = categoriaId;
+    }
+
 }

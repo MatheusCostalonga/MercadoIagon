@@ -26,6 +26,8 @@ public class ProdutoDAO {
                 objProduto.setIdProduto(rs.getInt("id_produto"));
                 objProduto.setNome(rs.getString("nome"));
                 objProduto.setValor(rs.getFloat("valor"));
+                objProduto.setCategoriaId(rs.getInt("categoria_id"));
+                objProduto.setImgBlob(rs.getBlob("imagem"));
                 Blob blob = rs.getBlob("imagem");
                 int blobLength = (int) blob.length();
                 byte[] imagemBytes = blob.getBytes(1, blobLength);
@@ -174,4 +176,5 @@ public class ProdutoDAO {
         }
         return null;
     }
+
 }
