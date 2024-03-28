@@ -8,7 +8,7 @@ public class ProdutoDTO {
     private byte[] imagem;
     private Blob imgBlob;
     private float valor;
-
+    
     public ProdutoDTO() {
     }
 
