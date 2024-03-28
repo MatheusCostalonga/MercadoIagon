@@ -15,7 +15,7 @@ public class FormCadastroUser extends javax.swing.JPanel {
      */
     public FormCadastroUser(TelaPrincipal telaPrincipal) {
         initComponents();
-        objDateNascimento.setDateFormat(new SimpleDateFormat ("yyyy-MM-dd"));
+        objDateNascimento.setDateFormat(new SimpleDateFormat ("             yyyy-MM-dd"));
         objDateNascimento.setTextField(txtNascimento);
         objDateNascimento.setDateSelectionMode(DateChooser.DateSelectionMode.SINGLE_DATE_SELECTED);
         this.telaPrincipal = telaPrincipal;
@@ -57,16 +57,18 @@ public class FormCadastroUser extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), " Conta", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria Math", 1, 30))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), " Conta", 2, 0, new java.awt.Font("Segoe UI", 1, 30), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Usuário");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Senha");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, -1, -1));
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
 
         txtUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel4.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 250, 50));
@@ -74,10 +76,11 @@ public class FormCadastroUser extends javax.swing.JPanel {
         txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel4.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 220, 50));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Informações Pessoais", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria Math", 1, 30), new java.awt.Color(51, 51, 51))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Informações Pessoais", 2, 0, new java.awt.Font("Segoe UI", 1, 30), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nome");
         jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
@@ -85,14 +88,17 @@ public class FormCadastroUser extends javax.swing.JPanel {
         jPanel5.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 250, 50));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nascimento");
         jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
 
         txtNascimento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNascimento.setForeground(new java.awt.Color(255, 255, 255));
         txtNascimento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel5.add(txtNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 250, 50));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Telefone");
         jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
 
@@ -103,10 +109,12 @@ public class FormCadastroUser extends javax.swing.JPanel {
         jPanel5.add(txtEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 250, 50));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Endereço");
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Email");
         jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
 
@@ -117,17 +125,20 @@ public class FormCadastroUser extends javax.swing.JPanel {
         jPanel5.add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, 250, 50));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Cpf");
         jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Cep");
         jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, -1, -1));
 
         txtCep.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel5.add(txtCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 250, 50));
 
-        txtCriar.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        txtCriar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtCriar.setForeground(new java.awt.Color(255, 255, 255));
         txtCriar.setText("Criar");
         txtCriar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txtCriar.addActionListener(new java.awt.event.ActionListener() {
@@ -138,10 +149,12 @@ public class FormCadastroUser extends javax.swing.JPanel {
         jPanel5.add(txtCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 580, 310, 50));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Já Tem Uma Conta?");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 640, -1, -1));
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, -1, -1));
 
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("Entrar");
         btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,7 +162,7 @@ public class FormCadastroUser extends javax.swing.JPanel {
                 btnEntrarMouseClicked(evt);
             }
         });
-        jPanel5.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 640, -1, -1));
+        jPanel5.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 640, -1, -1));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -178,10 +191,12 @@ public class FormCadastroUser extends javax.swing.JPanel {
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Faça Cadastro");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("E Entre Para Nosso Time!");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, -1));
 

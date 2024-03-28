@@ -54,6 +54,7 @@ public class FormEntrar extends javax.swing.JPanel {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnInscrever.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnInscrever.setForeground(new java.awt.Color(255, 255, 255));
         btnInscrever.setText("Inscrever-se");
         btnInscrever.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInscrever.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -64,10 +65,12 @@ public class FormEntrar extends javax.swing.JPanel {
         jPanel3.add(btnInscrever, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 610, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Não Tem Uma Conta?");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 610, -1, -1));
 
-        btnEntrar.setFont(new java.awt.Font("Cambria Math", 1, 20)); // NOI18N
+        btnEntrar.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("ENTRAR");
         btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,10 +104,12 @@ public class FormEntrar extends javax.swing.JPanel {
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Senha");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Usuário");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, -1));
 
