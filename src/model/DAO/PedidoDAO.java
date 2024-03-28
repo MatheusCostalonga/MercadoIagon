@@ -6,12 +6,76 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import model.bean.CarrinhoDTO;
 import model.bean.CarrinhoSingleton;
 import model.bean.PedidoDTO;
 
 public class PedidoDAO {
+
+    public List<PedidoDTO> leitura() {
+        List<PedidoDTO> pedidos = new ArrayList<>();
+        String sql = "SELECT * FROM pedidos";
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                PedidoDTO objPedido = new PedidoDTO();
+                objPedido.setIdPedido(rs.getInt("id_pedido"));
+                objPedido.setUsuarioId(rs.getInt("usuario_id"));
+                objPedido.setStatus(rs.getString("status_pagamento"));
+                objPedido.setEndereco(rs.getString("endereco"));
+                objPedido.setMetodoPagamento(rs.getString("metodo_pagamento"));
+                objPedido.setValorTotal(rs.getFloat("valor_total"));
+                objPedido.setData(rs.getString("data_hora"));
+                pedidos.add(objPedido);
+            }
+            rs.close();
+            stmt.close();
+            conexao.close();
+        } catch (SQLException e) {
+            System.out.println("Erro leirura de pedidos: " + e);
+        }
+        return pedidos;
+    }
+
+    public void deletaPedido(PedidoDTO objpedido) {
+        String sql = "DELETE FROM pedidos WHERE id_pedido = ?";
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, objpedido.getIdPedido());
+
+            stmt.executeUpdate();
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            System.out.println("Erro delete pedido: " + e);
+        }
+    }
+
+    public void updatePedido(PedidoDTO objPedido) {
+        String sql = "UPDATE pedidos SET status_pagamento = ? WHERE id_pedido = ?";
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, objPedido.getStatus());
+            stmt.setInt(2, objPedido.getIdPedido());
+            
+            stmt.executeUpdate();
+            stmt.close();
+            conexao.close();
+        } catch (SQLException e) {
+            System.out.println("Erro em atulizar pedidos: "+ e);
+        }
+    }
 
     public void inserePedido(PedidoDTO objPedido) {
         String sql = "INSERT INTO pedidos (usuario_id, endereco, metodo_pagamento, valor_total, data_hora) VALUES (?, ?, ?, ?, NOW())";

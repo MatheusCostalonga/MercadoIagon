@@ -10,18 +10,20 @@ public class PedidoDTO {
     private String endereco;
     private String metodoPagamento;
     private float valorTotal;
+    private String data;
     private List<CarrinhoDTO> carrinhoItens;
 
     public PedidoDTO() {
     }
 
-    public PedidoDTO(int idPedido, int usuarioId, String status, String endereco, String metodoPagamento, float valorTotal, List<CarrinhoDTO> carrinhoItens) {
+    public PedidoDTO(int idPedido, int usuarioId, String status, String endereco, String metodoPagamento, float valorTotal, String data, List<CarrinhoDTO> carrinhoItens) {
         this.idPedido = idPedido;
         this.usuarioId = usuarioId;
         this.status = status;
         this.endereco = endereco;
         this.metodoPagamento = metodoPagamento;
         this.valorTotal = valorTotal;
+        this.data = data;
         this.carrinhoItens = carrinhoItens;
     }
 
@@ -73,6 +75,14 @@ public class PedidoDTO {
         this.valorTotal = valorTotal;
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
     public List<CarrinhoDTO> getCarrinhoItens() {
         return carrinhoItens;
     }
@@ -81,5 +91,4 @@ public class PedidoDTO {
         this.carrinhoItens = carrinhoItens;
     }
 
-    
 }

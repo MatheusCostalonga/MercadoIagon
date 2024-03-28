@@ -8,6 +8,7 @@ import component.FormGames;
 import component.FormGerenciaUsuario;
 import component.FormHardware;
 import component.FormHome;
+import component.FormPedido;
 import component.FormPerfil;
 import component.FormPerifirico;
 import java.awt.Component;
@@ -40,15 +41,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } else if (!logged) {
             menu.addItem("Usuario", "Entrar");
         } else {
-            menu.addItem("Usuario", "Perfil");
+            menu.addItem("Usuario", "Perfil", "Meus Pedidos");
         }
-        
-        
+
         final TelaPrincipal telaPrincipal = this;
         showForm(new FormHome(telaPrincipal));
         menu.setFont(new java.awt.Font("sansserif", 1, 14));
         menu.applay(this);
-        
+
         menu.addEvent(new MenuEvent() {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
@@ -71,7 +71,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     }
                 } else {
                     if (menuItem && index == 2 && subIndex == 1 && !adm) {
-                        showForm(new FormPerfil());
+                        showForm(new FormPerfil(telaPrincipal));
+                    } else if (menuItem && index == 2 && subIndex == 2 && !adm) {
+                        showForm(new FormPedido(telaPrincipal));
                     }
                 }
 
@@ -94,13 +96,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menu.addItem("Home");
         menu.addItem("Categorias", "Hardware", "Periféricos", "Games", "Casa Inteligente");
         if (adm && logged) {
-            menu.addItem("ADM", "Cadastro de Produtos", "Modificação de Produtos", "Gerenciamento de usuários","Trocar Usuario");
+            menu.addItem("ADM", "Cadastro de Produtos", "Modificação de Produtos", "Gerenciamento de usuários", "Trocar Usuario");
         } else if (!logged) {
             menu.addItem("Usuario", "Entrar");
         } else {
-            menu.addItem("Usuario", "Perfil", "Trocar Usuario");
+            menu.addItem("Usuario", "Perfil", "Meus Pedidos", "Trocar Usuario");
         }
-        
+
         final TelaPrincipal telaPrincipal = this;
         showForm(new FormHome(telaPrincipal));
         menu.setFont(new java.awt.Font("sansserif", 1, 14));
@@ -127,9 +129,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     }
                 } else {
                     if (menuItem && index == 2 && subIndex == 1 && !adm) {
-                        showForm(new FormPerfil());
-                    }
-                    if (menuItem && index == 2 && subIndex == 2 && !adm) {
+                        showForm(new FormPerfil(telaPrincipal));
+                    } else if (menuItem && index == 2 && subIndex == 2 && !adm) {
+                        showForm(new FormPedido(telaPrincipal));
+                    } else if (menuItem && index == 2 && subIndex == 3 && !adm) {
                         showForm(new FormEntrar(telaPrincipal));
                     }
                 }
@@ -142,7 +145,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         showForm(new FormEdicaoProduto());
                     } else if (menuItem && index == 2 && subIndex == 3) {
                         showForm(new FormGerenciaUsuario());
-                    }else if (menuItem && index == 2 && subIndex == 4) {
+                    } else if (menuItem && index == 2 && subIndex == 4) {
                         showForm(new FormEntrar(telaPrincipal));
                     }
                 }
