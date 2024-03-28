@@ -1,10 +1,7 @@
 package component;
 
-import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import model.bean.CarrinhoDTO;
 import model.bean.CarrinhoSingleton;
@@ -23,7 +20,6 @@ public class FormCarrinho extends javax.swing.JPanel {
         initComponents();
         carregarItensCarrinho();
         this.telaPrincipal = telaPrincipal;
-
         lblDeleta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDeletaMouseClicked(evt);
@@ -45,6 +41,7 @@ public class FormCarrinho extends javax.swing.JPanel {
         if (rowIndex >= 0 && rowIndex < carrinhoItens.size()) {
             carrinhoItens.remove(rowIndex);
             carregarItensCarrinho();
+            Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "ITEM REMOVIDO!");
         } else {
             System.out.println("Índice da linha selecionada fora dos limites da lista de carrinho.");
         }
@@ -140,7 +137,7 @@ public class FormCarrinho extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-        if(CarrinhoSingleton.getInstance().getCarrinhoItens().isEmpty()){
+        if (CarrinhoSingleton.getInstance().getCarrinhoItens().isEmpty()) {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "CARRINHO FAZIO!");
             return;
         }

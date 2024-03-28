@@ -228,13 +228,13 @@ public class FormCadastroProduto extends javax.swing.JPanel {
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         if (txtNome.getText().trim().equals("") || (float) spinPreco.getValue() == 0) {
-            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "PREENCHA TODOS OS CAMPOS CORRETAMENTE!");
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "PREENCHA TODOS OS CAMPOS CORRETAMENTE!");
             return;
         } else if (cbxCategoria.getSelectedItem().equals("Selecionar")) {
-            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "SELECIONE UMA CATEGORIA!");
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "SELECIONE UMA CATEGORIA!");
             return;
         } else if (tamanho == 0) {
-            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "SELECIONE UMA FOTO!");
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "SELECIONE UMA FOTO!");
             return;
         } else {
             String sql = "INSERT INTO produtos(nome,imagem,valor,categoria_id)values(?,?,?,?)";
@@ -250,7 +250,7 @@ public class FormCadastroProduto extends javax.swing.JPanel {
                 stmt.executeUpdate();
                 stmt.close();
                 conexao.close();
-                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_RIGHT, "CADASTRO REALIZADO COM SUCESSO!");
+                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "CADASTRO REALIZADO COM SUCESSO!");
             } catch (SQLException e) {
                 System.out.println(" cadastro de produto: " + e);
             }

@@ -183,6 +183,7 @@ public class FormEntrar extends javax.swing.JPanel {
                     GradientDropdownMenu menu = new GradientDropdownMenu();
                     telaPrincipal.atualizarVariaveis();
                     telaPrincipal.showForm(new FormHome(telaPrincipal));
+                    Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "BEM VINDO DE VOLTA");
                     telaPrincipal.atualizaMenu();
                 }
             }

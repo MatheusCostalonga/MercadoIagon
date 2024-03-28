@@ -126,6 +126,7 @@ public class FormGames extends javax.swing.JPanel {
             panelInScrollPane.setLayout(gridLayout);
             panelInScrollPane.add(newPanel); // Adicionando o novo painel ao JPanel no JScrollPane
             ScrollPane.setViewportView(panelInScrollPane); // Definindo o JPanel como o componente exibido pelo JScrollPane
+            ScrollPane.getVerticalScrollBar().setUnitIncrement(20);
         }
     }
 
